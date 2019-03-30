@@ -2,4 +2,6 @@
 
 Para iniciar:
 
-  make iniciar ejecutar
+```
+make iniciar ejecutar
+```
