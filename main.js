@@ -1,15 +1,17 @@
-const { app, BrowserWindow, ipcMain, Tray } = require("electron");
+const { app,  BrowserWindow, ipcMain, Tray } = require("electron");
 const path = require("path");
 
 let mainWindow;
 let tray = undefined;
 const recursos = path.join(__dirname, "recursos");
 
+
 function createWindow() {
+
   mainWindow = new BrowserWindow({
-    width: 175,
-    height: 175,
-    titleBarStyle: "customButtonsOnHover",
+    x: 200,
+    width: 140,
+    height: 80,
     frame: false,
     alwaysOnTop: true,
     vibrancy: "dark", //"light",
@@ -59,6 +61,12 @@ app.dock.hide();
 app.on("ready", () => {
   createWindow();
   createTray();
+
+  let displays = require("electron").screen.getAllDisplays()
+  let width = displays[0].bounds.width;
+  let height = displays[0].bounds.height;
+
+  mainWindow.setPosition(width - 143, height-0);
 });
 
 app.on("window-all-closed", function() {
