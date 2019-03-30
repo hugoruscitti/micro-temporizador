@@ -1,0 +1,20 @@
+{
+  "name": "micro-temporizador",
+  "version": "1.0.0",
+  "description": "...",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/hugoruscitti/micro-temporizador",
+  "keywords": [
+    "Electron",
+    "timebox",
+    "pomodoro"
+  ],
+  "author": "GitHub",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^4.1.1"
+  }
+}

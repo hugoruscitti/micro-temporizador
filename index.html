@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+
+    <style media="screen">
+      .circle {
+        border: 5px solid #D3D1D3;
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        border-radius: 100%;
+        text-align: center;
+        background-image: linear-gradient(#FFFFFF, #EEF2F8);
+        box-shadow: 0 0 8px gray;
+
+        position: relative;
+      }
+
+      html {
+        overflow: hidden;
+        -webkit-app-region: drag;
+        cursor: grab;
+        user-select: none;
+      }
+
+      html:active {
+        cursor: grabbing;
+      }
+
+
+      .time {
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top: 50px;
+        font-size: 40px;
+        font-family: sans-serif;
+        color: #636363;
+      }
+
+
+    </style>
+
+
+
+    <div class="circle">
+      <div class="time">
+        27'
+      </div>
+    </div>
+
+
+    <script>
+      require('./renderer.js')
+
+
+    </script>
+  </body>
+</html>
