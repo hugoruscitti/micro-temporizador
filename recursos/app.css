@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+}
+
+html {
+  overflow: hidden;
+  user-select: none;
+  font-family: 'Titillium';
+}
+
+@font-face {
+  font-family: 'Titillium';
+  src: URL('TitilliumWeb-ExtraLight.ttf') format('truetype');
+}
+
+.time {
+  text-align: center;
+  padding-top: 15px;
+  font-size: 30px;
+  color: white;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.contenedor {
+  padding: 8px;
+}
+
+.bar {
+  height: 5px;
+  background: rgba(0, 0,0, 0.1);
+}
+
+.progress {
+  width: 20%;
+  height: 5px;
+  background-color: #0098C1;
+}
+
+.destellar {
+  animation: destellar 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+@keyframes destellar {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.manejador {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 30px;
+  width: 80px;
+  border: 1px solid red;
+
+  -webkit-app-region: drag;
+  cursor: grab;
+}
+
+.manejador:active {
+  cursor: grabbing;
+}
+
+
+.controles {
+  position: absolute;
+  right: 0;
+
+  outline: 1px solid red;
+
+  font-size: x-small;
+  padding: 5px;
+}
+
+.controles a {
+  text-decoration: none;
+  font-family: sans-serif;
+  color: gray;
+}
+
+.controles a:hover {
+  color: white;
+  cursor: pointer !important;
+}
+
+.dn {
+  display: none;
+}
+
+.invisible {
+  display: none;
+}

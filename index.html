@@ -2,158 +2,34 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>micro-temporizador</title>
+    <link rel="stylesheet" href="recursos/app.css">
+    <script src="recursos/stimulus.umd.js" charset="utf-8"></script>
   </head>
-  <body>
 
-    <style media="screen">
-      body {
-        margin: 0;
-      }
+  <body data-controller="app">
 
-      html {
-        overflow: hidden;
-        -webkit-app-region: drag;
-        cursor: grab;
-        user-select: none;
-        font-family: 'Titillium';
-      }
+    <div class="manejador">
 
-      html:active {
-        cursor: grabbing;
-      }
-
-      @font-face {
-  font-family: 'Titillium';
-  src: URL('recursos/TitilliumWeb-ExtraLight.ttf') format('truetype');
-}
-
-      .time {
-        text-align: center;
-        padding-top: 15px;
-        font-size: 30px;
-        color: white;
-        text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .contenedor {
-        padding: 8px;
-      }
-
-      .bar {
-        height: 5px;
-        background: rgba(0, 0,0, 0.1);
-      }
-
-      .progress {
-        width: 20%;
-        height: 5px;
-        background-color: #0098C1;
-      }
-
-      .destellar {
-        animation: destellar 2s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease;
-      }
-
-      @keyframes destellar {
-        0% {
-          opacity: 0;
-        }
-
-        30% {
-          opacity: 1;
-        }
-
-        60% {
-          opacity: 1;
-        }
-
-        100% {
-          opacity: 0;
-        }
-      }
-
-      .controles {
-        position: absolute;
-        left: 0;
-
-        font-size: x-small;
-        padding: 5px;
-      }
-
-      .controles a {
-        text-decoration: none;
-        font-family: sans-serif;
-        color: gray;
-      }
-
-      .controles a:hover {
-        color: white;
-        cursor: pointer !important;
-      }
-
-      .dn {
-        display: none;
-      }
-    </style>
-
-
-    <div class="controles" id='controles'>
-      <a href="#" onclick="iniciar()">▶</a>
     </div>
 
+    <div class="controles">
+      <button data-action="click->app#iniciar">▶</button>
+    </div>
 
-    <div class="time" id='time'>
-        ñ_ñ
+    <div class="time" data-action="click->app#click" data-target="app.contador">
+      &nbsp;
     </div>
 
     <div class="contenedor">
 
-      <div class="bar">
-        <div class="progress" id="progress">
+      <div class="bar" data-target="app.bar">
+        <div class="progress" data-target="app.progreso">
         </div>
       </div>
 
     </div>
 
-    <script>
-      let tiempo = 30;
-      let activo = false;
-
-      require('./renderer.js')
-      let electron = require('electron');
-
-      function actualizar() {
-        document.getElementById('time').innerHTML = tiempo;
-        document.getElementById('progress').style.width = `${(100/30) * tiempo}%`;
-
-        let ipc = electron.ipcRenderer;
-        ipc.send('actualizar-tray', `${tiempo}'`);
-
-      }
-
-      function iniciar() {
-        tiempo = 30;
-        activo = true;
-        actualizar();
-        document.getElementById('controles').classList.toggle('dn');
-      }
-
-      setInterval(function() {
-        if (activo) {
-          tiempo -= 1;
-
-          if (tiempo < 0) {
-            document.getElementById('time').classList.toggle("destellar");
-            tiempo = 0;
-          }
-
-          actualizar();
-        }
-      }, 1000 * 60);
-
-    </script>
+    <script src="app.js" charset="utf-8"></script>
   </body>
 </html>
