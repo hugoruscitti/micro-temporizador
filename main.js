@@ -1,4 +1,4 @@
-const { app,  BrowserWindow, ipcMain, Tray } = require("electron");
+const { app, Menu, BrowserWindow, ipcMain, Tray } = require("electron");
 const path = require("path");
 
 let mainWindow;
@@ -32,6 +32,19 @@ const createTray = () => {
   tray.on("right-click", toggleWindow);
   tray.on("double-click", toggleWindow);
 
+  //tray.setTitle("27'")
+
+/*
+  const contextMenu = Menu.buildFromTemplate([
+    {label: 'Item1', type: 'radio'},
+    {label: 'Item2', type: 'radio'},
+    {label: 'Item3', type: 'radio', checked: true},
+    {label: 'Item4', type: 'radio'}
+  ])
+
+  tray.setContextMenu(contextMenu)
+  */
+
   tray.on("click", function(event) {
     toggleWindow();
 
@@ -43,6 +56,10 @@ const createTray = () => {
     */
   });
 };
+
+ipcMain.on('actualizar-tray', function (event, arg) {
+  tray.setTitle(arg);
+})
 
 const toggleWindow = () => {
   if (mainWindow.isVisible()) {
