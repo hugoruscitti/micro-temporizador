@@ -5,12 +5,12 @@ body {
 html {
   overflow: hidden;
   user-select: none;
-  font-family: 'Titillium';
+  font-family: "Titillium";
 }
 
 @font-face {
-  font-family: 'Titillium';
-  src: URL('TitilliumWeb-ExtraLight.ttf') format('truetype');
+  font-family: "Titillium";
+  src: URL("TitilliumWeb-ExtraLight.ttf") format("truetype");
 }
 
 .time {
@@ -27,13 +27,13 @@ html {
 
 .bar {
   height: 5px;
-  background: rgba(0, 0,0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .progress {
   width: 20%;
   height: 5px;
-  background-color: #0098C1;
+  background-color: #0098c1;
 }
 
 .destellar {
@@ -62,7 +62,6 @@ html {
   top: 0;
   height: 30px;
   width: 80px;
-  border: 1px solid red;
 
   -webkit-app-region: drag;
   cursor: grab;
@@ -72,12 +71,9 @@ html {
   cursor: grabbing;
 }
 
-
 .controles {
   position: absolute;
   right: 0;
-
-  outline: 1px solid red;
 
   font-size: x-small;
   padding: 5px;
@@ -100,4 +96,10 @@ html {
 
 .invisible {
   display: none;
+}
+
+.boton {
+  border: 0;
+  background: none;
+  color: #ffffff54;
 }

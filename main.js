@@ -5,9 +5,7 @@ let mainWindow;
 let tray = undefined;
 const recursos = path.join(__dirname, "recursos");
 
-
 function createWindow() {
-
   mainWindow = new BrowserWindow({
     x: 200,
     width: 140,
@@ -28,13 +26,14 @@ function createWindow() {
 }
 
 const createTray = () => {
+  //#tray = new Tray(path.join(recursos, "icono.png"));
   tray = new Tray(path.join(recursos, "icono.png"));
   tray.on("right-click", toggleWindow);
   tray.on("double-click", toggleWindow);
 
   //tray.setTitle("27'")
 
-/*
+  /*
   const contextMenu = Menu.buildFromTemplate([
     {label: 'Item1', type: 'radio'},
     {label: 'Item2', type: 'radio'},
@@ -57,9 +56,9 @@ const createTray = () => {
   });
 };
 
-ipcMain.on('actualizar-tray', function (event, arg) {
+ipcMain.on("actualizar-tray", function(event, arg) {
   tray.setTitle(arg);
-})
+});
 
 const toggleWindow = () => {
   if (mainWindow.isVisible()) {
@@ -79,11 +78,11 @@ app.on("ready", () => {
   createWindow();
   createTray();
 
-  let displays = require("electron").screen.getAllDisplays()
+  let displays = require("electron").screen.getAllDisplays();
   let width = displays[0].bounds.width;
   let height = displays[0].bounds.height;
 
-  mainWindow.setPosition(width - 143, height-0);
+  mainWindow.setPosition(width - 143, height - 0);
 });
 
 app.on("window-all-closed", function() {
