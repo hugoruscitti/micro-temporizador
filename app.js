@@ -17,6 +17,7 @@ application.register(
 
     iniciar() {
       this.barTarget.classList.remove("invisible");
+      this.contadorTarget.classList.remove("destellar");
       this.tiempo = 30;
       this.segundos = 0;
       this.estado = ACTIVO;
