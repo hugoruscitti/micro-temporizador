@@ -26,8 +26,7 @@ function createWindow() {
 }
 
 const createTray = () => {
-  //#tray = new Tray(path.join(recursos, "icono.png"));
-  tray = new Tray(path.join(recursos, "icono.png"));
+  tray = new Tray(path.join(recursos, "icono0.png"));
   tray.on("right-click", toggleWindow);
   tray.on("double-click", toggleWindow);
 
@@ -57,7 +56,30 @@ const createTray = () => {
 };
 
 ipcMain.on("actualizar-tray", function(event, arg) {
-  tray.setTitle(arg);
+  //tray.setTitle(arg);
+  arg = parseInt(arg.replace("'", ""), 10);
+  let nombre = "icono0.png";
+
+  if (arg > 15) {
+    if (arg > 20) {
+      nombre = "icono100.png";
+    } else {
+      nombre = "icono75.png";
+    }
+  } else {
+    if (arg > 10) {
+      nombre = "icono50.png";
+    } else {
+      if (arg === 0) {
+        nombre = "icono0.png";
+      } else {
+        nombre = "icono25.png";
+      }
+    }
+  }
+
+  let icono = path.join(recursos, nombre);
+  tray.setImage(icono);
 });
 
 const toggleWindow = () => {

@@ -40,6 +40,7 @@ html {
   animation: destellar 2s;
   animation-iteration-count: infinite;
   animation-timing-function: ease;
+  color: red;
 }
 
 @keyframes destellar {

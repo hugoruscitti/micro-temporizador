@@ -60,8 +60,10 @@ application.register(
     }
 
     connect() {
+      this.tiempo = 0;
       this.estado = DETENIDO;
       this.barTarget.classList.add("invisible");
+      ipc.send("actualizar-tray", `${this.tiempo}'`);
 
       setInterval(() => {
         this.tick();
