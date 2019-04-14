@@ -1,10 +1,11 @@
 {
   "name": "micro-temporizador",
   "version": "1.0.0",
-  "description": "...",
+  "description": "Un temporizando a medida.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "compilar": "electron-builder"
   },
   "repository": "https://github.com/hugoruscitti/micro-temporizador",
   "keywords": [
@@ -12,7 +13,13 @@
     "timebox",
     "pomodoro"
   ],
-  "author": "GitHub",
+  "build": {
+    "appId": "micro.temporizador.id",
+    "mac": {
+      "category": "pomodoro.timebox"
+    }
+  },
+  "author": "Hugo Ruscitti",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^4.1.1"

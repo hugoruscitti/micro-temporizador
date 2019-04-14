@@ -4,6 +4,7 @@ all:
 	@echo ""
 	@echo " iniciar       instala todas las dependencias."
 	@echo " ejecutar      ejecuta la aplicación."
+	@echo " compilar      genera la aplicación en formato binario."
 	@echo ""
 	@echo ""
 
@@ -12,3 +13,6 @@ iniciar:
 
 ejecutar:
 	npm start
+
+compilar:
+	npm run compilar
