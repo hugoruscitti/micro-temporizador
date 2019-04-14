@@ -22,6 +22,10 @@ application.register(
       this.segundos = 0;
       this.estado = ACTIVO;
       this.actualizarUI();
+
+      electron.ipcRenderer.on("reiniciar", () => {
+        this.iniciar();
+      });
     }
 
     tick() {
@@ -50,13 +54,7 @@ application.register(
     }
 
     click() {
-      if (this.estado === FINALIZADO) {
-        this.iniciar();
-      }
-
-      if (this.estado === DETENIDO) {
-        this.iniciar();
-      }
+      this.iniciar();
     }
 
     connect() {

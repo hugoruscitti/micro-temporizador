@@ -1,4 +1,4 @@
-const { app, Menu, BrowserWindow, ipcMain, Tray } = require("electron");
+const { app, Menu, ipc, BrowserWindow, ipcMain, Tray } = require("electron");
 const path = require("path");
 
 let mainWindow;
@@ -18,6 +18,7 @@ function createWindow() {
     }
   });
 
+  mainWindow.setResizable(false);
   mainWindow.loadFile("index.html");
 
   mainWindow.on("closed", function() {
@@ -27,21 +28,34 @@ function createWindow() {
 
 const createTray = () => {
   tray = new Tray(path.join(recursos, "icono0.png"));
+
   tray.on("right-click", toggleWindow);
-  tray.on("double-click", toggleWindow);
 
   //tray.setTitle("27'")
 
-  /*
   const contextMenu = Menu.buildFromTemplate([
-    {label: 'Item1', type: 'radio'},
-    {label: 'Item2', type: 'radio'},
-    {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'}
-  ])
+    {
+      label: "Mostrar ventana",
+      type: "checkbox",
+      checked: true,
+      click: toggleWindow
+    },
+    {
+      label: "Reiniciar",
+      click: () => {
+        mainWindow.webContents.send("reiniciar");
+      }
+    },
+    { type: "separator" },
+    {
+      label: "Salir",
+      click: () => {
+        app.quit();
+      }
+    }
+  ]);
 
-  tray.setContextMenu(contextMenu)
-  */
+  tray.setContextMenu(contextMenu);
 
   tray.on("click", function(event) {
     toggleWindow();
